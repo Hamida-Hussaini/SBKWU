@@ -1,0 +1,47 @@
+{% extends 'basic.html' %}
+
+{% block title %} Add Department {% endblock %}
+{% block css %}
+  #btnSearch {
+            color: #738A9C;
+        }
+
+        #logo h1,
+        img {
+            float: left;
+        }
+
+        #logo img {
+            width: 100px;
+            height: 80px;
+            padding-left: 15px;
+        }
+{% endblock %}
+{% block body %}
+    <div class=" form-grids row form-grids-right">
+        <div class="widget-shadow " data-example-id="basic-forms">
+            <div class="form-title">
+                <h4>Add Department :</h4>
+            </div>
+            <div class="form-body">
+                <form class="form-horizontal" method='POST' class='form' action="addDepartment">
+                     {% csrf_token %}
+<!--                     {{ form.as_p }}-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Department Name</label>
+                        <div class="col-sm-9">
+<!--                            <input type="text" class="form-control" id="txtLastName" placeholder="Last Name">-->
+                            {{ form.depName }}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-offset-2">
+                        <button type="submit" class="btn btn-default">Add Department</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+

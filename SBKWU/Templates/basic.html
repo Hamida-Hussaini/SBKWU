@@ -1,0 +1,238 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>{% block title %}{% endblock%}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Glance Design Dashboard Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<style>
+{% block css %}{% endblock%}
+</style>
+    {% load static %}
+<!-- Bootstrap Core CSS -->
+<link href='{% static "css/bootstrap.css" %}' rel='stylesheet' type='text/css' />
+
+<!-- Custom CSS -->
+<link href='{% static "css/style.css" %}' rel='stylesheet' type='text/css' />
+
+<!-- font-awesome icons CSS -->
+<link href='{% static "css/font-awesome.css" %}' rel="stylesheet">
+<!-- //font-awesome icons CSS-->
+    <link href='{% static "css/invoice.css" %}' rel="stylesheet" />
+<!-- side nav css file -->
+    <link href='{% static "css/SidebarNav.min.css" %}' media='all' rel='stylesheet' type='text/css'/>
+    <link href='{% static "css/basic.css" %}' rel="stylesheet" />
+    <!-- //side nav css file -->
+
+ <!-- js-->
+    <script src='{% static "js/jquery-1.11.1.min.js" %}'></script>
+    <script src='{% static "js/modernizr.custom.js" %}'></script>
+
+<!--webfonts-->
+    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
+<!--//webfonts-->
+
+<!-- chart -->
+    <script src='{% static "js/Chart.js" %}'></script>
+<!-- //chart -->
+
+<!-- Metis Menu -->
+    <script src='{% static "js/jquery.metisMenu.js" %}'></script>
+    <script src='{% static "js/metisMenu.min.js" %}'></script>
+    <script src='{% static "js/custom.js" %}'></script>
+    <link href='{% static "css/custom.css" %}' rel="stylesheet">
+<!--//Metis Menu -->
+     <script src='{% static "js/Chart.bundle.js" %}'></script>
+    <script src='{% static "js/utils.js" %}'></script>
+
+    <script src='{% static "js/bootstrap.js" %}'></script>
+
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+
+            <div class="header-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div id="logo">
+                    <img src="images/SBKWU-Logo.jpg">
+                    <h1><a class="navbar-brand" href="" style="color:#1bbc9b;">SBK Attandance App</a></h1>
+
+                </div>
+
+            </div>
+            <div class="header-right">
+
+                <div class="profile_details">
+                    <ul>
+                        <li class="dropdown profile_details_drop">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <div class="profile_img">
+                                    <span class="prfil-img"><img src="images/2.jpg" alt=""> </span>
+                                    <div class="user-name">
+                                        <p>Admin Name</p>
+                                        <span>Administrator</span>
+                                    </div>
+                                    <i class="fa fa-angle-down lnr"></i>
+                                    <i class="fa fa-angle-up lnr"></i>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu drp-mnu">
+                                <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
+                                <li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li>
+                                <li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li>
+                                <li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </nav>
+
+        <nav class="navbar-default navbar-side" role="navigation">
+
+            <div class="sidebar-collapse">
+                <ul class="sidebar-menu">
+                    <li class="header">MAIN NAVIGATION</li>
+                    <li class="treeview">
+                        <a href="../">
+                            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="">
+                            <i class="fa fa-print"></i>
+                            <span>Reports</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href=""><i class="fa fa-angle-right"></i>Monthly Reports</a>
+                            </li>
+                            <li><a href=""><i class="fa fa-angle-right"></i>Daily Report</a></li>
+                            <li><a href=""><i class="fa fa-angle-right"></i>Project Details</a>
+                            </li>
+                            <li><a href=""><i class="fa fa-angle-right"></i>_admin Profile</a>
+                            </li>
+                            <li><a href=""><i class="fa fa-angle-right"></i>_admin
+                                    Timesheet</a></li>
+                            <li><a href=""><i class="fa fa-angle-right"></i>Supervisor/Admin Payroll</a></li>
+                            <li><a href=""><i class="fa fa-angle-right"></i>Project</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="">
+                            <i class="fa fa-building-o"></i>
+                            <span>Department</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="addDepartment"><i class="fa fa-angle-right"></i>Add Department</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Edit Department</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Search Department</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Activate Department</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Deactivate Department</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Delete Department</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="">
+                            <i class="fa fa-group"></i>
+                            <span>Employee</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="addEmployee"><i class="fa fa-angle-right"></i>Add Employee</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Edit Employee</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Search Employee</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Activate Employee</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Deactivate Employee</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Delete Employee</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i> Change Login Id</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i> Change Login Password</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-key"></i>
+                            <span>Devices</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Add Salary</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Update Salary</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Activate Salary</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Deactivate Salary</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-dollar"></i>
+                            <span>Attandance</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Add Salary</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Update Salary</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Activate Salary</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Deactivate Salary</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-dollar"></i>
+                            <span>Salary</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Add Salary</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Update Salary</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Activate Salary</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Deactivate Salary</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+     <div id="page-wrapper">
+            <div class="main-page">
+                {% block body %}{% endblock %}
+            </div>
+     </div>
+     </div>
+    {% load static %}
+    <!--scrolling js-->
+    <script src='{% static "js/jquery.nicescroll.js" %}'></script>
+    <script src='{% static "js/scripts.js" %}'></script>
+    <!--//scrolling js-->
+
+    <!-- side nav js -->
+    <script src='{% static "js/SidebarNav.min.js" %}' type='text/javascript'></script>
+    <script>
+        $('.sidebar-menu').SidebarNav()
+    </script>
+
+    <!-- //side nav js -->
+
+
+
+
+</body>
+</html>

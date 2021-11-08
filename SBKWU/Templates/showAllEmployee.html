@@ -1,0 +1,54 @@
+{% extends 'basic.html' %}
+
+{% block title %} Show Employee {% endblock %}
+{% block css %}
+  #btnSearch {
+            color: #738A9C;
+        }
+
+        #logo h1,
+        img {
+            float: left;
+        }
+
+        #logo img {
+            width: 100px;
+            height: 80px;
+            padding-left: 15px;
+        }
+{% endblock %}
+{% block body %}
+{% load widget_tweaks %}
+    <div class=" form-grids row form-grids-right">
+        <div class="widget-shadow " data-example-id="basic-forms">
+            <div class="form-title">
+                <h4>All Employee :</h4>
+            </div>
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">EmpId</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">CNIC</th>
+                  <th scope="col">Department</th>
+                  <th scope="col">DOB</th>
+                </tr>
+              </thead>
+              <tbody>
+               {% for i in employee %}
+                <tr>
+                    <th scope="row">{{ i.id }}</th>
+                    <td>{{ i.Name }}</td>
+                    <td>{{ i.CNIC }}</td>
+                    <td>{{ i.depName }}</td>
+                    <td>{{ i.dob }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+
+
+        </div>
+    </div>
+{% endblock %}
+
