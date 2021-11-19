@@ -1,0 +1,110 @@
+{% extends 'basic.html' %}
+
+{% block title %}Mark Attendance{% endblock %}
+{% block css %}
+  #btnSearch {
+            color: #738A9C;
+        }
+
+        #logo h1,
+        img {
+            float: left;
+        }
+
+        #logo img {
+            width: 100px;
+            height: 80px;
+            padding-left: 15px;
+        }
+{% endblock %}
+
+{% block script %}
+        var holiDays = [];
+         {% for result in disableDates %}
+                var disableDate ="{{ result.atDate }}";
+                holiDays.push(disableDate)
+         {% endfor %}
+        function disableHoliday(date) {
+            var string = $.datepicker.formatDate('yy-mm-dd', date);
+            var filterDate = new Date(string);
+            var day = filterDate.getDay();
+            var isHoliday = ($.inArray(string, holiDays) != -1);
+
+            return [day != 0 && day !=6 && !isHoliday]
+         }
+         $(function () {
+            $("#txtDate").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd-mm-yy',
+                numberOfMonths: 1,
+                beforeShowDay: disableHoliday
+<!--                defaultDate: "+1w",-->
+<!--                showButtonPanel: true,-->
+<!--                buttonImage: 'images/calendar.gif',-->
+<!--                buttonImageOnly: true,-->
+            });
+        });
+{% endblock %}
+{% block body %}
+{% load widget_tweaks %}
+    <div class=" form-grids row form-grids-right">
+        <div class="widget-shadow " data-example-id="basic-forms">
+            <div class="form-title">
+                <h4>Mark Attendance :</h4>
+            </div>
+            <div class="form-body">
+                <form class="form-horizontal" method='POST' class='form' action="markAttendance">
+                  {% csrf_token %}
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Select Date: </label>
+                        <div class=" date col-sm-5">
+
+                             <div class="input-group input-icon right">
+                                <input type="text"  value={{currentDate|date:'d-m-Y'}} name="atdDate" class="form-control"  id="txtDate" autocomplete="off"/>
+                                <span class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="submit" class="btn btn-default">Generate Attendance</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="widget-shadow " data-example-id="basic-forms">
+            <div class="form-title">
+                <h4>Attendance Records :</h4>
+            </div>
+            <div class="form-body">
+                 <table class="table">
+                     <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">EmpId</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">InTime</th>
+                            <th scope="col">OutTime</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                     {% for result in dataset %}
+                     <tr>
+                         <td>{{ result.empId }}</td>
+                         <td>{{ result.Name }}</td>
+                         <td>{{ result.atdDate}}</td>
+                         <td>{{ result.inTime}}</td>
+                         <td>{{ result.outTime }}</td>
+                         <td>{{ result.status }}</td>
+                     </tr>
+                     {% endfor %}
+                     </tbody>
+                 </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
