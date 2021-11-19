@@ -1,6 +1,6 @@
 {% extends 'basic.html' %}
 
-{% block title %} Add Department {% endblock %}
+{% block title %} Insert Leave Type {% endblock %}
 {% block css %}
   #btnSearch {
             color: #738A9C;
@@ -22,22 +22,29 @@
     <div class=" form-grids row form-grids-right">
         <div class="widget-shadow " data-example-id="basic-forms">
             <div class="form-title">
-                <h4>Add Department :</h4>
+                <h4>Add Leave Type :</h4>
             </div>
             <div class="form-body">
-                <form class="form-horizontal" method='POST' class='form' action="addDepartment">
+                <form class="form-horizontal" method='POST' class='form' action="addLeaveType">
                      {% csrf_token %}
 <!--                     {{ form.as_p }}-->
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Department Name</label>
+                        <label class="col-sm-2 control-label">Leave Type: </label>
                         <div class="col-sm-9">
 <!--                            <input type="text" class="form-control" id="txtLastName" placeholder="Last Name">-->
-                            {% render_field form.depName class+="form-control" placeholder="depName" %}
+                            {% render_field form.LeaveType class+="form-control" placeholder="Leave Type" %}
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label class="col-sm-2 control-label">Short Name:</label>
+                        <div class="col-sm-9">
+<!--                            <input type="text" class="form-control" id="txtLastName" placeholder="Last Name">-->
+                            {% render_field form.shortName class+="form-control" placeholder="Short Name" %}
                         </div>
                     </div>
 
                     <div class="col-sm-offset-2">
-                        <button type="submit" class="btn btn-default">Add Department</button>
+                        <button type="submit" class="btn btn-default">Add Leave Type</button>
                     </div>
                 </form>
             </div>

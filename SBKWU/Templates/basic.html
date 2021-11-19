@@ -24,7 +24,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <link href='{% static "css/style.css" %}' rel='stylesheet' type='text/css' />
 
 <!-- font-awesome icons CSS -->
-<link href='{% static "css/font-awesome.css" %}' rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+<!--<link href='{% static "css/font-awesome.min.css" %}' rel="stylesheet">-->
 <!-- //font-awesome icons CSS-->
     <link href='{% static "css/invoice.css" %}' rel="stylesheet" />
 <!-- side nav css file -->
@@ -54,9 +56,20 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     <script src='{% static "js/utils.js" %}'></script>
 
     <script src='{% static "js/bootstrap.js" %}'></script>
+<!--    <link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">-->
+<!--    <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>-->
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+    <script>
+    	{% block script %} {% endblock %}
+
+        </script>
 </head>
 <body>
+    {% load static %}
+
     <div id="wrapper">
         <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
 
@@ -68,7 +81,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     <span class="icon-bar"></span>
                 </button>
                 <div id="logo">
-                    <img src="images/SBKWU-Logo.jpg">
+                    <img src="{% static 'images/SBKWU-Logo.jpg' %}">
                     <h1><a class="navbar-brand" href="" style="color:#1bbc9b;">SBK Attandance App</a></h1>
 
                 </div>
@@ -122,17 +135,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href=""><i class="fa fa-angle-right"></i>Monthly Reports</a>
+                            <li><a href="../monthlyAttendance"><i class="fa fa-angle-right"></i>Monthly Attendance Reports</a>
                             </li>
-                            <li><a href=""><i class="fa fa-angle-right"></i>Daily Report</a></li>
-                            <li><a href=""><i class="fa fa-angle-right"></i>Project Details</a>
+                            <li><a href="../dailyAttendance"><i class="fa fa-angle-right"></i>Daily Attendance Report</a></li>
                             </li>
-                            <li><a href=""><i class="fa fa-angle-right"></i>_admin Profile</a>
-                            </li>
-                            <li><a href=""><i class="fa fa-angle-right"></i>_admin
-                                    Timesheet</a></li>
-                            <li><a href=""><i class="fa fa-angle-right"></i>Supervisor/Admin Payroll</a></li>
-                            <li><a href=""><i class="fa fa-angle-right"></i>Project</a></li>
+
                         </ul>
                     </li>
                     <li class="treeview">
@@ -142,9 +149,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="addDepartment"><i class="fa fa-angle-right"></i>Add Department</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i>Edit Department</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i>Search Department</a></li>
+                            <li><a href="../addDepartment"><i class="fa fa-angle-right"></i>Add Department</a></li>
+                            <li><a href="../showDepartment"><i class="fa fa-angle-right"></i>Show Department</a></li>
+                            <li><a href="../searchDepartment"><i class="fa fa-angle-right"></i>Edit Department</a></li>
+                            <li><a href="../searchDepartment"><i class="fa fa-angle-right"></i>Search Department</a></li>
                             <li><a href="#"><i class="fa fa-angle-right"></i>Activate Department</a></li>
                             <li><a href="#"><i class="fa fa-angle-right"></i>Deactivate Department</a></li>
                             <li><a href="#"><i class="fa fa-angle-right"></i>Delete Department</a></li>
@@ -158,9 +166,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="addEmployee"><i class="fa fa-angle-right"></i>Add Employee</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i>Edit Employee</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i>Search Employee</a></li>
+                            <li><a href="../addEmployee"><i class="fa fa-angle-right"></i>Add Employee</a></li>
+                            <li><a href="../searchEmployee"><i class="fa fa-angle-right"></i>Edit Employee</a></li>
+                            <li><a href="../showEmployee"><i class="fa fa-angle-right"></i>Show All Employee</a></li>
+                            <li><a href="../searchEmployee"><i class="fa fa-angle-right"></i>Search Employee By Name</a></li>
+                            <li><a href="../searchEmployeeById"><i class="fa fa-angle-right"></i>Search Employee By Id</a></li>
+                            <li><a href="../searchEmployeeByDepartment"><i class="fa fa-angle-right"></i>Search Employee By Dep</a></li>
                             <li><a href="#"><i class="fa fa-angle-right"></i>Activate Employee</a></li>
                             <li><a href="#"><i class="fa fa-angle-right"></i>Deactivate Employee</a></li>
                             <li><a href="#"><i class="fa fa-angle-right"></i>Delete Employee</a></li>
@@ -175,10 +186,23 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-angle-right"></i>Add Salary</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i>Update Salary</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i>Activate Salary</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i>Deactivate Salary</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Add Device</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Update Device</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-dollar"></i>
+                            <span>Leave Type</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="../addLeaveType"><i class="fa fa-angle-right"></i>Add Leave</a></li>
+                            <li><a href="../searchLeaveType"><i class="fa fa-angle-right"></i>Search Leave</a></li>
+                            <li><a href="../showLeaveType"><i class="fa fa-angle-right"></i>Show Leave Reords</a></li>
+                            <li><a href="../searchLeaveType"><i class="fa fa-angle-right"></i>Edit Leave</a></li>
+                            <li><a href=""><i class="fa fa-angle-right"></i>Activate Leave</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Deactivate Leave</a></li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -188,25 +212,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-angle-right"></i>Add Salary</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i>Update Salary</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i>Activate Salary</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i>Deactivate Salary</a></li>
+                            <li><a href="../markAttendance"><i class="fa fa-angle-right"></i>Generate Daily Attendance</a></li>
+                            <li><a href="../searchEmpMark"><i class="fa fa-angle-right"></i>Mark Attendance</a></li>
+                            <li><a href="../searchEmpAttendance"><i class="fa fa-angle-right"></i>Search Attendance</a></li>
                         </ul>
                     </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-dollar"></i>
-                            <span>Salary</span>
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-angle-right"></i>Add Salary</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i>Update Salary</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i>Activate Salary</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i>Deactivate Salary</a></li>
-                        </ul>
-                    </li>
+
                 </ul>
             </div>
         </nav>
@@ -217,7 +228,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             </div>
      </div>
      </div>
-    {% load static %}
     <!--scrolling js-->
     <script src='{% static "js/jquery.nicescroll.js" %}'></script>
     <script src='{% static "js/scripts.js" %}'></script>
@@ -230,7 +240,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     </script>
 
     <!-- //side nav js -->
-
 
 
 

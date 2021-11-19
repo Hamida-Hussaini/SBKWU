@@ -1,0 +1,72 @@
+{% extends 'basic.html' %}
+
+{% block title %} Update Employee Attendance {% endblock %}
+{% block css %}
+  #btnSearch {
+            color: #738A9C;
+        }
+
+        #logo h1,
+        img {
+            float: left;
+        }
+
+        #logo img {
+            width: 100px;
+            height: 80px;
+            padding-left: 15px;
+        }
+{% endblock %}
+{% block body %}
+{% load widget_tweaks %}
+    <div class=" form-grids row form-grids-right">
+        <div class="widget-shadow " data-example-id="basic-forms">
+            <div class="form-title">
+                <h4>Update Employee Attendance :</h4>
+            </div>
+            <div class="form-body">
+                <form class="form-horizontal" method='POST' class='form' action="../updateEmpAttendance/{{ atd.id }}">
+                  {% csrf_token %}
+                    <input type="hidden" class="form-control" placeholder="Employee Id" name="empId" id="id_empId" value="{{ employee.id }}">
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Employee: </label>
+                        <div class="col-sm-9">
+                           <input type="text" class="form-control" placeholder="Employee Name" name="empName" id="id_empName" value="{{ employee.Name }}" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Date: </label>
+                        <div class="col-sm-9">
+                             <input class="form-control" placeholder="date" name="atdDate" id="id_atdDate" value="{{ atd.atdDate|date:'Y-m-d' }}" type="date">
+                        </div>
+                        <!-- for="{{ form.Name.id_for_label }}"-->
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">In Time:</label>
+                        <div class="col-sm-9">
+                             <input class="form-control" placeholder="date" name="inTime" id="id_inTime" value="{{ atd.inTime|date:'H:i:s' }}" type="time">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Out Time: </label>
+                        <div class="col-sm-9">
+                             <input  class="form-control" placeholder="date" name="outTime" id="id_outTime" value="{{ atd.outTime|date:'H:i:s' }}" type="time">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Status: </label>
+                        <div class="col-sm-9">
+                             <input type="text" class="form-control" placeholder="status" name="status" id="id_status" value="{{ atd.status }}" type="time">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-offset-2">
+                        <button type="submit" class="btn btn-default">Mark Employee Attendance</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

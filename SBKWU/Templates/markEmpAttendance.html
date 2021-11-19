@@ -1,0 +1,77 @@
+{% extends 'basic.html' %}
+
+{% block title %} Mark Employee Attendance {% endblock %}
+{% block css %}
+  #btnSearch {
+            color: #738A9C;
+        }
+
+        #logo h1,
+        img {
+            float: left;
+        }
+
+        #logo img {
+            width: 100px;
+            height: 80px;
+            padding-left: 15px;
+        }
+{% endblock %}
+{% block body %}
+{% load widget_tweaks %}
+    <div class=" form-grids row form-grids-right">
+        <div class="widget-shadow " data-example-id="basic-forms">
+            <div class="form-title">
+                <h4>Mark Employee Attendance :</h4>
+
+            </div>
+            <div class="form-body">
+                <form class="form-horizontal" method='POST' class='form' action="../markEmpAttendance/{{ employee.id }}">
+                  {% csrf_token %}
+                    <input type="hidden" class="form-control" placeholder="Employee Id" name="empId" id="id_empId" value="{{ employee.id }}">
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Employee: </label>
+                        <div class="col-sm-9">
+                           <input type="text" class="form-control" placeholder="Employee Id" name="empName" id="id_empName" value="{{ employee.Name }}" disabled>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Date: </label>
+                        <div class="col-sm-9">
+                            {% render_field form.atdDate class+="form-control" placeholder="Date" type="Date" %}
+                            {{ form.Name.errors }}
+                        </div>
+                        <!-- for="{{ form.Name.id_for_label }}"-->
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">In Time:</label>
+                        <div class="col-sm-9">
+                            {% render_field form.inTime class+="form-control" placeholder="In Time" type="Time" %}
+<!--                        <input type="text" class="form-control" id="txtLastName" placeholder="Last Name">-->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Out Time: </label>
+                        <div class="col-sm-9">
+                             {% render_field form.outTime class+="form-control" placeholder="Out Time" type="Time" %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Status: </label>
+                        <div class="col-sm-9">
+                             {% render_field form.status class+="form-control" placeholder="status"%}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-offset-2">
+                        <button type="submit" class="btn btn-default">Mark Employee Attendance</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,138 @@
+{% extends 'basic.html' %}
+
+{% block title %} Monthly Attendance Report{% endblock %}
+{% block css %}
+  #btnSearch {
+            color: #738A9C;
+        }
+
+        #logo h1,
+        img {
+            float: left;
+        }
+
+        #logo img {
+            width: 100px;
+            height: 80px;
+            padding-left: 15px;
+        }
+        #tableAtd{
+            width:100%;
+            margin-left:10px;
+        }
+
+{% endblock %}
+{% block body %}
+{% load widget_tweaks %}
+    <div class=" form-grids row form-grids-right">
+        <div class="widget-shadow " data-example-id="basic-forms">
+            <div class="form-title">
+                <h4>Monthly Attendance Report :</h4>
+            </div>
+            <div class="form-body">
+                <form class="form-horizontal" method='POST' class='form' action="monthlyAttendance">
+                  {% csrf_token %}
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Enter Month: </label>
+                        <div class=" date col-sm-5">
+                            <input type="number"   name="txtMonth" class="form-control"  id="txtMonth" autocomplete="off"/>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label class="col-sm-2 control-label">Enter Year: </label>
+                        <div class=" date col-sm-5">
+                            <input type="number"  name="txtYear" class="form-control"  id="txtYear" autocomplete="off"/>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="submit" class="btn btn-default">View Report</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="widget-shadow " data-example-id="basic-forms">
+            <div class="form-title">
+                <h4>Monthly Attendance Report :</h4>
+            </div>
+            <table id="tableAtd">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">EmpId</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">1</th>
+                  <th scope="col">2</th>
+                  <th scope="col">3</th>
+                  <th scope="col">4</th>
+                  <th scope="col">5</th>
+                  <th scope="col">6</th>
+                  <th scope="col">7</th>
+                  <th scope="col">8</th>
+                  <th scope="col">9</th>
+                  <th scope="col">10</th>
+                  <th scope="col">11</th>
+                  <th scope="col">12</th>
+                  <th scope="col">13</th>
+                  <th scope="col">14</th>
+                  <th scope="col">15</th>
+                  <th scope="col">16</th>
+                  <th scope="col">17</th>
+                  <th scope="col">18</th>
+                  <th scope="col">19</th>
+                  <th scope="col">20</th>
+                  <th scope="col">21</th>
+                  <th scope="col">22</th>
+                  <th scope="col">23</th>
+                  <th scope="col">24</th>
+                  <th scope="col">25</th>
+                  <th scope="col">26</th>
+                  <th scope="col">27</th>
+                  <th scope="col">28</th>
+                  <th scope="col">29</th>
+                  <th scope="col">30<th>
+                </tr>
+              </thead>
+              <tbody>
+               {% for i in dataset %}
+                <tr>
+                    <th scope="row">{{ i.empId }}</th>
+                    <td>{{ i.Name }}</td>
+                    <td>{{ i.1 }}</td>
+                    <td>{{ i.2 }}</td>
+                    <td>{{ i.3 }}</td>
+                    <td>{{ i.4 }}</td>
+                    <td>{{ i.5 }}</td>
+                    <td>{{ i.6 }}</td>
+                    <td>{{ i.7 }}</td>
+                    <td>{{ i.8 }}</td>
+                    <td>{{ i.9 }}</td>
+                    <td>{{ i.10 }}</td>
+                    <td>{{ i.11 }}</td>
+                    <td>{{ i.12 }}</td>
+                    <td>{{ i.13 }}</td>
+                    <td>{{ i.14 }}</td>
+                    <td>{{ i.15 }}</td>
+                    <td>{{ i.16 }}</td>
+                    <td>{{ i.17 }}</td>
+                    <td>{{ i.18 }}</td>
+                    <td>{{ i.19 }}</td>
+                    <td>{{ i.20 }}</td>
+                    <td>{{ i.21 }}</td>
+                    <td>{{ i.22 }}</td>
+                    <td>{{ i.23 }}</td>
+                    <td>{{ i.24 }}</td>
+                    <td>{{ i.25 }}</td>
+                    <td>{{ i.26 }}</td>
+                    <td>{{ i.27 }}</td>
+                    <td>{{ i.28 }}</td>
+                    <td>{{ i.29 }}</td>
+                    <td>{{ i.30 }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+
+
+        </div>
+    </div>
+{% endblock %}
+

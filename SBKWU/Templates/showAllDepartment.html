@@ -1,6 +1,6 @@
 {% extends 'basic.html' %}
 
-{% block title %} Show Employee {% endblock %}
+{% block title %} Show Department {% endblock %}
 {% block css %}
   #btnSearch {
             color: #738A9C;
@@ -22,29 +22,25 @@
     <div class=" form-grids row form-grids-right">
         <div class="widget-shadow " data-example-id="basic-forms">
             <div class="form-title">
-                <h4>All Employee :</h4>
+                <h4>All Department :</h4>
             </div>
             <table class="table">
               <thead class="thead-dark">
                 <tr>
-                  <th scope="col">EmpId</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">CNIC</th>
-                  <th scope="col">Department</th>
-                  <th scope="col">DOB</th>
+                  <th scope="col">Department_Id</th>
+                  <th scope="col">Department_Name</th>
                   <th scope="col">Action</th>
+
                 </tr>
               </thead>
               <tbody>
-               {% for i in employee %}
+               {% for i in Department %}
                 <tr>
                     <th scope="row">{{ i.id }}</th>
-                    <td>{{ i.Name }}</td>
-                    <td>{{ i.CNIC }}</td>
+
                     <td>{{ i.depName }}</td>
-                    <td>{{ i.dob }}</td>
-                     <td>
-                        <a href="/editEmployee/{{ i.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>
+                    <td>
+                        <a href="/editDepartment/{{ i.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>
                     </td>
                 </tr>
                 {% endfor %}

@@ -1,0 +1,80 @@
+{% extends 'basic.html' %}
+
+{% block title %} Search Department {% endblock %}
+{% block css %}
+  #btnSearch {
+            color: #738A9C;
+        }
+
+        #logo h1,
+        img {
+            float: left;
+        }
+
+        #logo img {
+            width: 100px;
+            height: 80px;
+            padding-left: 15px;
+        }
+{% endblock %}
+{% block body %}
+{% load widget_tweaks %}
+    <div class=" form-grids row form-grids-right">
+         <div class="widget-shadow " data-example-id="basic-forms">
+            <div class="form-title">
+                <h4>Search Department :</h4>
+            </div>
+            <div class="form-body">
+                <form class="form-horizontal" method='POST' class='form' action="searchDepartment">
+                  {% csrf_token %}
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Department Name: </label>
+                        <div class=" date col-sm-5">
+
+                             <div class="input-group input-icon right">
+                                <input type="text" name="txtName" class="form-control"  id="txtName"/>
+
+                                <span class="input-group-addon">
+                                    <i class="fa fa-search"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="submit" class="btn btn-default">Search Department</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="widget-shadow " data-example-id="basic-forms">
+            <div class="form-title">
+                <h4>All Employee :</h4>
+            </div>
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Department_Id</th>
+                  <th scope="col">Department_Name</th>
+                  <th scope="col">Action</th>
+
+                </tr>
+              </thead>
+              <tbody>
+               {% for i in department %}
+                <tr>
+                    <th scope="row">{{ i.id }}</th>
+
+                    <td>{{ i.depName }}</td>
+                    <td>
+                        <a href="/editDepartment/{{ i.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>
+                    </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+
+
+        </div>
+    </div>
+{% endblock %}
+

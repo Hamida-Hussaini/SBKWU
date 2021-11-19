@@ -8,11 +8,7 @@ class Department(models.Model):
         db_table = "sbk_department"
 
 class Employee(models.Model):
-    departmentsList = []
-    department = Department.objects.all()
-    for i in department:
-        departmentsList.append((i.id, i.depName))
-    depId= models.IntegerField(choices=departmentsList,default=1)
+    depId= models.IntegerField()
     Name = models.CharField(max_length=30)
     FatherName = models.CharField(max_length=30)
     genders = (('Female', 'Female'),('Male', 'Male'))
@@ -26,3 +22,33 @@ class Employee(models.Model):
 
     class Meta:
         db_table = "sbk_employee"
+
+class Attendance(models.Model):
+    empId= models.IntegerField()
+    atdDate = models.DateField()
+    inTime = models.TimeField(blank=True)
+    outTime = models.TimeField(blank=True)
+    status = models.CharField(max_length=20)
+    class Meta:
+        db_table = "sbk_attendance"
+
+
+class Leave(models.Model):
+    LeaveType = models.CharField(max_length=100)
+    shortName = models.CharField(max_length=20)
+    class Meta:
+        db_table = "sbk_leave"
+
+class employeeLeave(models.Model):
+    empId= models.IntegerField()
+    leaveDate = models.DateField()
+    leaveId = models.IntegerField()
+
+    class Meta:
+        db_table = "sbk_empLeave"
+
+class deviceAttendance(models.Model):
+    empId= models.IntegerField()
+    TimeStamp = models.DateTimeField()
+    class Meta:
+        db_table = "sbk_deviceAttendance"

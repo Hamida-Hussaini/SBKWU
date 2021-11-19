@@ -1,0 +1,82 @@
+{% extends 'basic.html' %}
+
+{% block title %} Search Leave {% endblock %}
+{% block css %}
+  #btnSearch {
+            color: #738A9C;
+        }
+
+        #logo h1,
+        img {
+            float: left;
+        }
+
+        #logo img {
+            width: 100px;
+            height: 80px;
+            padding-left: 15px;
+        }
+{% endblock %}
+{% block body %}
+{% load widget_tweaks %}
+    <div class=" form-grids row form-grids-right">
+         <div class="widget-shadow " data-example-id="basic-forms">
+            <div class="form-title">
+                <h4>Search Leave Type:</h4>
+            </div>
+            <div class="form-body">
+                <form class="form-horizontal" method='POST' class='form' action="searchLeaveType">
+                  {% csrf_token %}
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Leave Short Name: </label>
+                        <div class=" date col-sm-5">
+
+                             <div class="input-group input-icon right">
+                                <input type="text" name="txtSearch" class="form-control"  id="txtSearch"/>
+
+                                <span class="input-group-addon">
+                                    <i class="fa fa-search"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="submit" class="btn btn-default">Search Leave</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="widget-shadow " data-example-id="basic-forms">
+            <div class="form-title">
+                <h4>Leave Records :</h4>
+            </div>
+           <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Leave Type</th>
+                  <th scope="col">Short Name</th>
+                  <th scope="col">Action</th>
+
+                </tr>
+              </thead>
+              <tbody>
+               {% for i in Leave %}
+                <tr>
+                    <th scope="row">{{ i.id }}</th>
+
+                    <td>{{ i.LeaveType }}</td>
+                    <td>{{ i.shortName }}</td>
+                    <td>
+                        <a href="/editLeaveType/{{ i.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>
+                    </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+
+
+        </div>
+    </div>
+{% endblock %}
+

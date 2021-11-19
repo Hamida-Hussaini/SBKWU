@@ -1,6 +1,6 @@
 {% extends 'basic.html' %}
 
-{% block title %} Show Employee {% endblock %}
+{% block title %} Show All Leave {% endblock %}
 {% block css %}
   #btnSearch {
             color: #738A9C;
@@ -22,29 +22,27 @@
     <div class=" form-grids row form-grids-right">
         <div class="widget-shadow " data-example-id="basic-forms">
             <div class="form-title">
-                <h4>All Employee :</h4>
+                <h4>Show All Leave :</h4>
             </div>
             <table class="table">
               <thead class="thead-dark">
                 <tr>
-                  <th scope="col">EmpId</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">CNIC</th>
-                  <th scope="col">Department</th>
-                  <th scope="col">DOB</th>
+                  <th scope="col">Id</th>
+                  <th scope="col">Leave Type</th>
+                  <th scope="col">Short Name</th>
                   <th scope="col">Action</th>
+
                 </tr>
               </thead>
               <tbody>
-               {% for i in employee %}
+               {% for i in Leave %}
                 <tr>
                     <th scope="row">{{ i.id }}</th>
-                    <td>{{ i.Name }}</td>
-                    <td>{{ i.CNIC }}</td>
-                    <td>{{ i.depName }}</td>
-                    <td>{{ i.dob }}</td>
-                     <td>
-                        <a href="/editEmployee/{{ i.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>
+
+                    <td>{{ i.LeaveType }}</td>
+                    <td>{{ i.shortName }}</td>
+                    <td>
+                        <a href="/editLeaveType/{{ i.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>
                     </td>
                 </tr>
                 {% endfor %}

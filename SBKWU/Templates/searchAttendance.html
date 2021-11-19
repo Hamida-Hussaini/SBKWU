@@ -1,0 +1,86 @@
+{% extends 'basic.html' %}
+
+{% block title %} Search Attendance {% endblock %}
+{% block css %}
+  #btnSearch {
+            color: #738A9C;
+        }
+
+        #logo h1,
+        img {
+            float: left;
+        }
+
+        #logo img {
+            width: 100px;
+            height: 80px;
+            padding-left: 15px;
+        }
+{% endblock %}
+{% block body %}
+{% load widget_tweaks %}
+    <div class=" form-grids row form-grids-right">
+         <div class="widget-shadow " data-example-id="basic-forms">
+            <div class="form-title">
+                <h4>Search Attendance :</h4>
+            </div>
+            <div class="form-body">
+                <form class="form-horizontal" method='POST' class='form' action="searchEmpAttendance">
+                  {% csrf_token %}
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Attendance Id: </label>
+                        <div class=" date col-sm-5">
+
+                             <div class="input-group input-icon right">
+                                <input type="text" name="txtId" class="form-control"  id="txtId"/>
+
+                                <span class="input-group-addon">
+                                    <i class="fa fa-search"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="submit" class="btn btn-default">Search Attendance</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+          <div class="widget-shadow " data-example-id="basic-forms">
+            <div class="form-title">
+                <h4>Attendance Records :</h4>
+            </div>
+            <div class="form-body">
+                 <table class="table">
+                     <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">EmpId</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">InTime</th>
+                            <th scope="col">OutTime</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                     {% for result in EmpAtd %}
+                     <tr>
+                         <td>{{ result.empId }}</td>
+                         <td>{{ result.Name }}</td>
+                         <td>{{ result.atdDate}}</td>
+                         <td>{{ result.inTime}}</td>
+                         <td>{{ result.outTime }}</td>
+                         <td>{{ result.status }}</td>
+                         <td>
+                             <a href="/editEmpAttendance/{{ result.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>
+                         </td>
+                     </tr>
+                     {% endfor %}
+                     </tbody>
+                 </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

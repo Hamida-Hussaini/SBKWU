@@ -1,0 +1,85 @@
+{% extends 'basic.html' %}
+
+{% block title %} Search Employee to Mark Attendance {% endblock %}
+{% block css %}
+  #btnSearch {
+            color: #738A9C;
+        }
+
+        #logo h1,
+        img {
+            float: left;
+        }
+
+        #logo img {
+            width: 100px;
+            height: 80px;
+            padding-left: 15px;
+        }
+{% endblock %}
+{% block body %}
+{% load widget_tweaks %}
+    <div class=" form-grids row form-grids-right">
+         <div class="widget-shadow " data-example-id="basic-forms">
+            <div class="form-title">
+                <h4>Search Employee to Mark Attendance :</h4>
+            </div>
+            <div class="form-body">
+                <form class="form-horizontal" method='POST' class='form' action="searchEmpMark">
+                  {% csrf_token %}
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Search Employee</label>
+                        <div class=" date col-sm-5">
+
+                             <div class="input-group input-icon right">
+                                <input type="text" name="txtSearch" class="form-control"  id="txtSearch"/>
+
+                                <span class="input-group-addon">
+                                    <i class="fa fa-search"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="submit" class="btn btn-default">Search Employee</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="widget-shadow " data-example-id="basic-forms">
+            <div class="form-title">
+                <h4>All Employee :</h4>
+            </div>
+            <table class="table">
+             <thead class="thead-dark">
+                <tr>
+                  <th scope="col">EmpId</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">CNIC</th>
+                  <th scope="col">Department</th>
+                  <th scope="col">DOB</th>
+                  <th scope="col">Mark Attendance</th>
+                </tr>
+              </thead>
+              <tbody>
+
+               {% for i in employee %}
+                <tr>
+                    <th scope="row">{{ i.id }}</th>
+                    <td>{{ i.Name }}</td>
+                    <td>{{ i.CNIC }}</td>
+                    <td>{{ i.depName }}</td>
+                    <td>{{ i.dob }}</td>
+                    <td>
+                        <a href="/markEmpAttendance/{{ i.id }}"><span class="glyphicon glyphicon-pencil" >Mark Employee Attendance</span></a>
+                    </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+
+
+        </div>
+    </div>
+{% endblock %}
+

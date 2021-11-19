@@ -30,13 +30,11 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Department: </label>
                         <div class="col-sm-9">
-<!--                            <select class="form-control">-->
-<!--                                {% for i in department %}-->
-<!--                                    <option value="{{ i.id }}">{{ i.depName}}</option>-->
-<!--                                {% endfor %}-->
-<!--                            </select>-->
-<!--                            <br>-->
-                         {% render_field form.depId class+="form-control" placeholder="depId" %}
+                            <select class="form-control" name="depId">
+                                {% for i in department %}
+                                    <option value="{{ i.id }}">{{ i.depName}}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
